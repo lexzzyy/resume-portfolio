@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Richard Adeoye - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --accent-color: #f59e0b;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --bg-light: #f8fafc;
+      --bg-white: #ffffff;
+      --border-color: #e5e7eb;
+      --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background-color: var(--bg-white);
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: var(--gradient-1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      text-align: center;
+      color: white;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 2rem;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #fff, #e0e7ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .cta-button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* About Section */
+    .about {
+      padding: 6rem 2rem;
+      background: var(--bg-light);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      max-width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: var(--shadow-xl);
+      transition: transform 0.3s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      background: var(--gradient-2);
+      border-radius: 20px;
+      z-index: -1;
+    }
+
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .about-text h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--gradient-3);
+      border-radius: 2px;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 6rem 2rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--text-dark);
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--gradient-1);
+      border-radius: 2px;
+    }
+
+    /* Education & Certifications */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: var(--gradient-1);
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 2rem;
+      animation: fadeInLeft 0.6s ease-out;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      animation: fadeInRight 0.6s ease-out;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 2rem;
+      width: 20px;
+      height: 20px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--bg-white), 0 0 0 8px var(--primary-color);
+    }
+
+    .timeline-item:nth-child(odd)::before {
+      right: -10px;
+    }
+
+    .timeline-item:nth-child(even)::before {
+      left: -10px;
+    }
+
+    .timeline-content {
+      background: var(--bg-white);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: var(--shadow-md);
+      border-left: 4px solid var(--primary-color);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .timeline-content h3 {
+      color: var(--primary-color);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content .institution {
+      color: var(--text-light);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-content .date {
+      color: var(--accent-color);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    /* Work Experience */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .work-card {
+      background: var(--bg-white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 4px solid var(--primary-color);
+    }
+
+    .work-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-1);
+    }
+
+    .work-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .work-card h3 {
+      color: var(--primary-color);
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .work-card .company {
+      color: var(--text-light);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .work-card ul {
+      list-style: none;
+    }
+
+    .work-card li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: var(--text-light);
+    }
+
+    .work-card li::before {
+      content: '▶';
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+      font-size: 0.8rem;
+    }
+
+    /* Skills Section */
+    .skills {
+      background: var(--bg-light);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .skill-item {
+      background: var(--bg-white);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-2);
+    }
+
+    .skill-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .skill-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .skill-item h4 {
+      color: var(--text-dark);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* Contact Section */
+    .contact {
+      background: var(--gradient-1);
+      color: white;
+      text-align: center;
+    }
+
+    .contact-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact h2 {
+      color: white;
+      margin-bottom: 2rem;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Align 3 items in a row */
+      gap: 2rem;
+      margin-top: 3rem;
+      justify-items: center; /* Optional: centers content inside each grid cell */
+    }
+
+    .contact-item h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 3rem 2rem 1rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-links a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .footer-text {
+      opacity: 0.7;
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item {
+        width: 100%;
+        left: 0;
+        padding-left: 4rem;
+      }
+
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+
+      .timeline-item::before {
+        left: 10px;
+      }
+
+      .timeline-item:nth-child(even)::before {
+        left: 10px;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .section {
+        padding: 4rem 1rem;
+      }
+    }
+
+      
+  </style>
+</head>
+<body>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>I'm Richard</h1>
+      <p>Backend Engineer & Data Analyst</p>
+      <a href="#about" class="cta-button">Discover My Work</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="newpics.png"  alt="Richard Adeoye" />
+        </div>
+        <div class="about-text">
+          <h2>Hello</h2>
+          <p>I am a detailed, focused, and highly motivated computer scientist with strong expertise in backend programming 
+	      and data-driven web application development. Skilled in building scalable server-side architectures, APIs, and 
+              database systems, I specialize in developing efficient and secure backend solutions that power modern web platforms. 
+              With a passion for data science and machine learning, I apply analytical thinking and innovative technologies to solve 
+              complex problems, ensuring high-performance applications and insightful data-driven results.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Bachelor of Engineering, Computer Engineering</h3>
+            <p class="institution">Ekiti State University, Ado-Ekiti, Ekiti State, Nigeria</p>
+            <p class="date">January 2011 - July 2016</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Master of Science, Computer Science</h3>
+            <p class="institution">University of Ibadan, Oyo State, Nigeria</p>
+            <p class="date">February 2022 - April 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Work Experience Section -->
+  <section class="section" style="background: var(--bg-light);">
+    <div class="container">
+      <h2 class="section-title">Work Experience</h2>
+      <div class="work-grid">
+        <div class="work-card">
+          <h3>Data Analyst</h3>
+          <p class="company">IT Department, Oyo State College of Nursing, Eleyele, Ibadan, Oyo State, Nigeria</p>
+          <ul>
+            <li>Design organizational solutions for computer files, business and financial records</li>
+            <li>Use analytics on research results using SPSS Version 21 (descriptive and inferential analysis)</li>
+            <li>Maintenance and management of the College database for improved performance</li>
+            <li>Assist principal investigators and nursing students during research</li>
+            <li>Responsible for maintenance of computer-based test center</li>
+          </ul>
+        </div>
+        
+        <div class="work-card">
+          <h3>Computer Engineer</h3>
+          <p class="company">Foretrust Digital Consulting Limited, Independence Layout, Enugu, Enugu State, Nigeria</p>
+          <ul>
+            <li>Assisted in building local area networks and maintaining computer-based test centers</li>
+            <li>Networked computers to aid daily efficiency</li>
+            <li>Troubleshot computer systems and implemented innovative solutions</li>
+            <li>Mentored interns on graphic design using Adobe Photoshop and Java programming</li>
+            <li>Maintained college computer-based test center</li>
+          </ul>
+        </div>
+        
+        <div class="work-card">
+          <h3>IT Personnel (NYSC)</h3>
+          <p class="company">National Youth Service Corps, Accounts Department, Enugu State, Nigeria</p>
+          <ul>
+            <li>Prepared payment schedules using Microsoft Excel and Access database</li>
+            <li>Handled written correspondence using computer applications</li>
+            <li>Troubleshot computer systems and installed software for department efficiency</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section skills">
+    <div class="container">
+      <h2 class="section-title">Core Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-icon">🐍</div>
+          <h4>Python Programming (Django)</h4>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">📊</div>
+          <h4>Data Science & Analytics</h4>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">🌐</div>
+          <h4>Php programming</h4>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">🎨</div>
+          <h4>Website development</h4>
+        </div>
+        <div class="skill-item">
+          <div class="skill-icon">💼</div>
+          <h4>Version control</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Online Certifications</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Learning Excel: Data Analysis</h3>
+            <p class="institution">LinkedIn</p>
+            <p class="date">January 2021</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Data Science Masters Class</h3>
+            <p class="institution">Pantech Pro Labs India Pvt Ltd</p>
+            <p class="date">March 2022</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>IoT Masters Class</h3>
+            <p class="institution">Pantech Pro Labs India Pvt Ltd</p>
+            <p class="date">July 2022</p>
+          </div>
+	</div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>MERN Stack</h3>
+            <p class="institution">Udemy (Dr Angela Yu)</p>
+            <p class="date">January 2024</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+<section class="section" id="projects">
+  <div class="container">
+    <h2 class="section-title">Practical Projects</h2>
+    <div class="work-grid">
+      
+      <!-- Project 1 -->
+      <div class="work-card">
+        <h3>E-commerce Website</h3>
+        <p class="company">Built with Django (Python)</p>
+	<a href="django_ecommerce.jpg" target="_blank">
+          <img src="django_ecommerce.jpg" alt="E-commerce project screenshot" style="width:100%; border-radius: 10px; margin-bottom: 1rem; box-shadow: var(--shadow-md);" />
+        </a>
+	<ul>
+          <li>Full-featured e-commerce site with cart, checkout, and payment integration</li>
+          <li>Built using Django, SQLite, HTML/CSS, JavaScript</li>
+          <li><a href="https://pstobook.pythonanywhere.com/" target="_blank" style="color: var(--primary-color); font-weight: 600;">View Live Project</a></li>
+        </ul>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="work-card">
+        <h3>Attendance Management System</h3>
+        <p class="company">Built with Django (Python)</p>
+	<a href="django_attendance.jpg" target="_blank">
+          <img src="django_attendance.jpg" alt="Attendance project screenshot" style="width:100%; border-radius: 10px; margin-bottom: 1rem; box-shadow: var(--shadow-md);" />
+	</a>        
+	<ul>
+          <li>Automated student/staff attendance with role-based access</li>
+          <li>Technologies used: Django, SQLite, Bootstrap</li>
+          <li><a href="https://your-attendance-link.com" target="_blank" style="color: var(--primary-color); font-weight: 600;">View Live Project</a></li>
+        </ul>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="work-card">
+        <h3>Past Question Web App</h3>
+        <p class="company">Built with PHP & MySQL</p>
+	<a href="php.jpg" target="_blank">
+          <img src="php.jpg" alt="Past Question App screenshot" style="width:100%; border-radius: 10px; margin-bottom: 1rem; box-shadow: var(--shadow-md);" />
+	<a/>        
+	<ul>
+          <li>Online platform for students to practice past questions</li>
+          <li>Created with PHP, MySQL, and Tailwind CSS</li>
+          <li><a href="https://nursingquestion.online" target="_blank" style="color: var(--primary-color); font-weight: 600;">View Live Project</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Contact Section -->
+  <section class="section contact">
+    <div class="container">
+      <div class="contact-content">
+        <h2>Let's Connect</h2>
+        <p>Ready to collaborate on exciting projects? Let's discuss how we can work together.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <h4>📍 Location</h4>
+            <p>Ibadan, Oyo State, Nigeria</p>
+          </div>
+          <div class="contact-item">
+            <h4>📱 Phone</h4>
+            <p>+2347014744031</p>
+          </div>
+	  <div class="contact-item">
+            <h4>📍 Email</h4>
+            <p>adeoye.richard.ar@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/adeoye-richard-56048b12b" target="_blank">LinkedIn</a>
+        <a href="https://www.twitter.com/adeoyerichard3" target="_blank">Twitter</a>
+        <a href="mailto:adeoye.richard.ar@gmail.com">Email</a>
+      </div>
+      <p>© <span id="year"></span> Richard | All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Add scroll animation for timeline items
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe timeline items and cards
+    document.querySelectorAll('.timeline-item, .work-card, .skill-item').forEach(item => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(20px)';
+      item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(item);
+    });
+  </script>
+
+
+</body>
+</html>
+
+    <script>
+       document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+
+</body>
+</html>
